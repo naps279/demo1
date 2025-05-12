@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luna &amp; Jasper's Love Story</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&amp;family=Montserrat:wght@400;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* === Base Styles === */
+    :root {
+      --pink: #FF6F91; /* Brighter pink */
+      --lavender: #E6E6FA;
+      --gold: #FFD700;
+      --text: #5A3D5C;
+      --light-pink: #FFB3C1; /* Light pink for backgrounds */
+      --light-lavender: #E8D8F0; /* Light lavender for accents */
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #FFF5F5 0%, #FFEEF8 100%);
+      color: var(--text);
+      margin: 0;
+      overflow-x: hidden;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ff6b8b" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'), auto;
+    }
+
+    /* === Glitter Background === */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle fill="%23FFD700" opacity="0.2" cx="20" cy="20" r="1"/><circle fill="%23FFD700" opacity="0.2" cx="50" cy="50" r="1.5"/><circle fill="%23FFD700" opacity="0.2" cx="80" cy="80" r="1"/></svg>');
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* === Header === */
+    header {
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      margin: 0;
+      color: var(--text);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .subtitle {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: var(--gold);
+      margin-top: 10px;
+    }
+
+    /* === Polaroid Gallery === */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 40px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .polaroid {
+      background: white;
+      padding: 15px 15px 40px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transform: rotate(-2deg);
+      transition: all 0.3s ease;
+      width: 250px;
+      border-radius: 15px;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .polaroid:hover {
+      transform: rotate(0deg) scale(1.05);
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      filter: sepia(10%);
+      transition: filter 0.3s;
+      border-radius: 12px;
+    }
+
+    .polaroid:hover img {
+      filter: sepia(0%);
+    }
+
+    /* === Love Notes === */
+    .love-notes {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .note {
+      display: inline-block;
+      background: white;
+      padding: 20px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transform: rotate(-3deg);
+      transition: all 0.3s;
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+      min-width: 140px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .note:nth-child(even) {
+      transform: rotate(2deg);
+    }
+
+    .note:hover {
+      transform: rotate(0deg) scale(1.1);
+      z-index: 10;
+    }
+
+    .note::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      background: var(--pink);
+      transform: translateX(-50%) rotate(45deg);
+      z-index: -1;
+      border-radius: 10px 0 0 0;
+    }
+
+    /* === Music Player === */
+    .music-player {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      margin: 40px auto;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      user-select: none;
+    }
+
+    .music-player h2 {
+      font-family: 'Dancing Script', cursive;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      user-select: none;
+    }
+
+    iframe {
+      border-radius: 12px;
+    }
+
+    /* === Confetti Button === */
+    .confetti-btn {
+      background: linear-gradient(45deg, var(--pink), var(--lavender));
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      color: white;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 105, 140, 0.3);
+      transition: all 0.3s;
+      margin: 30px auto;
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      z-index: 10;
+      user-select: none;
+    }
+
+    .confetti-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 105, 140, 0.4);
+    }
+
+    /* === Floating Elements Container === */
+    #floating-container {
+      position: fixed;
+      pointer-events: none;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: visible;
+      z-index: 5;
+    }
+
+    /* === Floating item styles === */
+    .float-item {
+      position: absolute;
+      bottom: -40px;
+      opacity: 0.8;
+      user-select: none;
+      animation-timing-function: ease-in-out;
+      will-change: transform, opacity;
+    }
+
+    .heart {
+      font-size: 26px;
+      color: #FF5A79;
+      animation-name: floatHeart;
+    }
+
+    .flower {
+      font-size: 26px;
+      color: #C589C3;
+      animation-name: floatFlower;
+    }
+
+    .teddy {
+      width: 30px;
+      height: 34px;
+      background-image: url('https://i.ibb.co/mhH3RzV/cute-teddy.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation-name: floatTeddy;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.85; }
+      50% { transform: translateY(-180px) translateX(8px) scale(1.2); opacity: 1; }
+      100% { transform: translateY(-360px) translateX(0) scale(1); opacity: 0.85; }
+    }
+
+    @keyframes floatFlower {
+      0% { transform: translateY(0) translateX(0) rotate(0deg) scale(1); opacity: 0.8; }
+      50% { transform: translateY(-200px) translateX(12px) rotate(20deg) scale(1.15); opacity: 1; }
+      100% { transform: translateY(-380px) translateX(0) rotate(0deg) scale(1); opacity: 0.8; }
+    }
+
+    @keyframes floatTeddy {
+      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.7; }
+      25% { transform: translateY(-90px) translateX(10px) rotate(10deg); opacity: 0.85; }
+      50% { transform: translateY(-180px) translateX(0) rotate(0deg); opacity: 0.7; }
+      75% { transform: translateY(-270px) translateX(-10px) rotate(-10deg); opacity: 0.85; }
+      100% { transform: translateY(-360px) translateX(0) rotate(0deg); opacity: 0.7; }
+    }
+
+    /* === Flower shower container === */
+    #flower-shower {
+      position: fixed;
+      pointer-events: none;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 20;
+      overflow: visible;
+    }
+
+    .flower-piece {
+      position: absolute;
+      font-size: 24px;
+    }
+
+    /* === Responsive */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .subtitle {
+        font-size: 1.5rem;
+      }
+
+      .polaroid {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Luna &amp; Jasper</h1>
+    <p class="subtitle">Made with love and stardust</p>
+  </header>
+
+  <!-- Polaroid Gallery -->
+  <section class="gallery">
+    <div class="polaroid">
+      <img src="https://images.squarespace-cdn.com/content/v1/5795f1ac579fb36d1f819272/1583119319671-VBO6VOGQVFZ2XE31I25O/The+Raw+Photographer+-+Adelaide+Wedding+Photographer+-+Second+Valley+-+Maslin+Beach+-+Couple+engagement+session+-+South+Australia+Destination+photography+-5.jpg?format=2500w" />
+      <p>Our first sunset together 🌅</p>
+    </div>
+    <div class="polaroid">
+      <img src="https://images.squarespace-cdn.com/content/v1/5795f1ac579fb36d1f819272/1583119390354-I6ANQLKPN4S19KMY1RMJ/The+Raw+Photographer+-+Adelaide+Wedding+Photographer+-+Second+Valley+-+Maslin+Beach+-+Couple+engagement+session+-+South+Australia+Destination+photography+-21.jpg?format=2500w" alt="Proposal" />
+      <p>The night you said "Yes" 💍</p>
+    </div>
+  </section>
+
+  <!-- Love Notes -->
+  <section class="love-notes">
+    <h2><i class="fas fa-heart"></i> Little Things I Love <i class="fas fa-heart"></i></h2>
+    <div class="note">How you laugh at my bad jokes</div>
+    <div class="note">Your morning coffee ritual</div>
+    <div class="note">The way you hold my hand</div>
+    <div class="note">Your secret pancake recipe</div>
+  </section>
+
+  <!-- Music Player -->
+  <section class="music-player">
+    <h2>Our Song</h2>
+    <iframe id="spotify-player" style="border-radius:12px" src="https://open.spotify.com/embed/track/0tgVpDi06FyKpA1z0VMD4v?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </section>
+
+  <!-- Confetti Button -->
+  <button class="confetti-btn" id="confetti-btn">Shower Us with Love!</button>
+
+  <!-- Floating container for hearts, flowers, teddies -->
+  <div id="floating-container" aria-hidden="true"></div>
+
+  <!-- Flower shower container (for triggered flower shower on play) -->
+  <div id="flower-shower" aria-hidden="true"></div>
+
+  <script>
+    // === Confetti Button ===
+    const confettiBtn = document.getElementById('confetti-btn');
+    confettiBtn.addEventListener('click', () => {
+      // Create confetti icons (hearts, stars, flowers)
+      const icons = ['❤️', '✨', '🌸', '💖', '🧸'];
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+        confetti.style.position = 'fixed';
+        confetti.style.fontSize = `${Math.random() * 20 + 10}px`;
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.top = '0';
+        confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+        document.body.appendChild(confetti);
+
+        // Remove after animation
+        setTimeout(() => {
+          confetti.remove();
+        }, 5000);
+      }
+    });
+
+    // Add animation for confetti
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes fall {
+        to {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // === Floating Hearts Cursor ===
+    document.addEventListener('mousemove', (e) => {
+      const heart = document.createElement('div');
+      heart.innerHTML = '❤️';
+      heart.style.position = 'fixed';
+      heart.style.left = `${e.clientX}px`;
+      heart.style.top = `${e.clientY}px`;
+      heart.style.fontSize = '20px';
+      heart.style.opacity = '0.7';
+      heart.style.transform = 'translate(-50%, -50%)';
+      heart.style.pointerEvents = 'none';
+      heart.style.userSelect = 'none';
+      document.body.appendChild(heart);
+
+      // Fade out and remove
+      setTimeout(() => {
+        heart.style.transition = 'all 1s';
+        heart.style.opacity = '0';
+        setTimeout(() => heart.remove(), 1000);
+      }, 500);
+    });
+
+    // === Floating Hearts, Flowers, Teddies ===
+    const floatingContainer = document.getElementById('floating-container');
+    const floatingTypes = ['heart', 'flower', 'teddy'];
+
+    function randomRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function createFloatingItem(type) {
+      const elem = document.createElement(type === 'teddy' ? 'div' : 'span');
+      elem.classList.add('float-item', type);
+      elem.style.left = `${randomRange(5, 95)}vw`;
+      elem.style.animationDuration = `${randomRange(6, 10)}s`;
+      elem.style.animationDelay = `${randomRange(0, 10)}s`;
+
+      if(type === 'heart' || type === 'flower') {
+        elem.textContent = type === 'heart' ? '❤️' : '🌸';
+        elem.style.fontSize = `${randomRange(20, 32)}px`;
+        elem.style.opacity = randomRange(0.6, 0.9);
+      } else if(type === 'teddy') {
+        elem.style.width = `${randomRange(24, 36)}px`;
+        elem.style.height = `${randomRange(28, 40)}px`;
+        elem.style.opacity = randomRange(0.5, 0.8);
+      }
+      floatingContainer.appendChild(elem);
+    }
+
+    for(let i = 0; i < 20; i++) {
+      const type = floatingTypes[Math.floor(Math.random() * floatingTypes.length)];
+      createFloatingItem(type);
+    }
+
+    // === Flower Shower on Play Song ===
+    const flowerShowerContainer = document.getElementById('flower-shower');
+    const spotifyFrame = document.getElementById('spotify-player');
+
+    // Observer to detect play
+    // Spotify iframe has limitations; we can detect click on container as workaround
+    spotifyFrame.addEventListener('load', () => {
+      // Due to cross-origin, we can't listen inside iframe, so listen clicks on container
+      spotifyFrame.contentWindow?.document?.addEventListener?.('play', () => triggerFlowerShower());
+    });
+
+    // Alternative: Listen click on iframe container to simulate play trigger
+    spotifyFrame.addEventListener('click', () => {
+      triggerFlowerShower();
+    });
+
+    // Flower shower logic
+    function triggerFlowerShower() {
+      for(let i=0; i<50; i++) {
+        const flower = document.createElement('div');
+        flower.classList.add('flower-piece');
+        flower.textContent = '🌸';
+
+        flower.style.left = `${Math.random() * 100}vw`;
+        flower.style.top = `-${randomRange(20, 50)}px`;
+        flower.style.fontSize = `${randomRange(16, 32)}px`;
+        flower.style.opacity = `${randomRange(0.7, 1)}`;
+
+        flowerShowerContainer.appendChild(flower);
+
+        // Animate flower falling
+        flower.animate([
+          { transform: `translateY(0) rotate(0deg)`, opacity: flower.style.opacity },
+          { transform: `translateY(110vh) rotate(${randomRange(180, 720)}deg)`, opacity: 0 }
+        ], {
+          duration: randomRange(3000, 5000),
+          easing: 'ease-out'
+        });
+
+        // Remove flower after animation
+        setTimeout(() => flower.remove(), 5000);
+      }
+    }
+  </script>
+</body>
+</html>
+
